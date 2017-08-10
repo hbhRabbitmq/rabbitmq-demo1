@@ -8,7 +8,7 @@
                                username="guest" password="guest"/>
 
     <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" retry-template="retryTemplate"
-                     exchange="${mq.exchange}"/>
+                     exchange="rabbitmq.demo1"/>
 
     <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
         <property name="backOffPolicy">
@@ -28,13 +28,13 @@
     <rabbit:admin id="admin" connection-factory="connectionFactory"/>
 
     <!-- 添加拣货异常后续处理队列 -->
-    <rabbit:queue name="${mq.queueName.prefix}.user.login" durable="true"/>
+    <rabbit:queue name="demo1.user.login" durable="true"/>
 
     <!-- 队列绑定路由规则 -->
-    <rabbit:topic-exchange name="${mq.exchange}" durable="true" declared-by="admin">
+    <rabbit:topic-exchange name="rabbitmq.demo1" durable="true" declared-by="admin">
         <rabbit:bindings>
-            <rabbit:binding queue="${mq.queueName.prefix}.user.login"
-                            pattern="${mq.queueName.prefix}.user.login"/>
+            <rabbit:binding queue="demo1.user.login"
+                            pattern="demo1.user.login"/>
             </rabbit:bindings>
     </rabbit:topic-exchange>
 

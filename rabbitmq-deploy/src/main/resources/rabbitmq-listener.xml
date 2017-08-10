@@ -6,7 +6,7 @@
     <!-- 队列绑定监听器 -->
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="1">
         <rabbit:listener ref="userLoginListener"
-                         queue-names="${mq.queueName.prefix}.user.login"/>
+                         queue-names="demo1.user.login"/>
     </rabbit:listener-container>
 
     <!-- 监听器bean -->

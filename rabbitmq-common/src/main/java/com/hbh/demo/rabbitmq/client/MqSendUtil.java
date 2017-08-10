@@ -2,22 +2,25 @@ package com.hbh.demo.rabbitmq.client;
 
 import com.alibaba.fastjson.JSON;
 import com.hbh.demo.rabbitmq.base.ConstantValue;
+import com.hbh.demo.rabbitmq.util.SpringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-@Component
+@Service
 public class MqSendUtil {
 
     private static final String AMQP_TEMPLATE = "amqpTemplate";
 
     @Autowired
-    private static AmqpTemplate amqpTemplate ;
+    private static AmqpTemplate amqpTemplate = SpringUtil.getBean("amqpTemplate",AmqpTemplate.class);
 
     public static String getDefaultExchange() {
         return ConstantValue.MQ_EXCHANGE;
