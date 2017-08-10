@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq-biz/rabbitmq-biz.iml" filepath="$PROJECT_DIR$/rabbitmq-biz/rabbitmq-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq-common/rabbitmq-common.iml" filepath="$PROJECT_DIR$/rabbitmq-common/rabbitmq-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq-demo1.iml" filepath="$PROJECT_DIR$/rabbitmq-demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq-deploy/rabbitmq-deploy.iml" filepath="$PROJECT_DIR$/rabbitmq-deploy/rabbitmq-deploy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq-model/rabbitmq-model.iml" filepath="$PROJECT_DIR$/rabbitmq-model/rabbitmq-model.iml" />
+    </modules>
+  </component>
+</project>
