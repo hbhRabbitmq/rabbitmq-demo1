@@ -16,8 +16,12 @@ public class UserController {
     @ResponseBody
     public String login(UserLoginVO userLoginVO){
         for (int i= 0 ;i<1000;i++){
-            userService.login(userLoginVO);
+            UserLoginVO userLoginVO1 = new UserLoginVO("username"+i,"password"+i);
+            userService.login(userLoginVO1);
         }
         return "已发送";
     }
+
+
+
 }

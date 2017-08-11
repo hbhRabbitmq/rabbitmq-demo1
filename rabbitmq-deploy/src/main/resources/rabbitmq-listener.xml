@@ -7,8 +7,13 @@
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="1">
         <rabbit:listener ref="userLoginListener"
                          queue-names="demo1.user.login"/>
+        <rabbit:listener ref="aListener"
+                         queue-names="demo1.user.login"/>
     </rabbit:listener-container>
 
     <!-- 监听器bean -->
     <bean id="userLoginListener" class="com.hbh.demo.rabbitmq.springamqp.consumers.UserLoginListener"/>
+
+    <bean id="aListener" class="com.hbh.demo.rabbitmq.springamqp.consumers.AListener"/>
+
 </beans>

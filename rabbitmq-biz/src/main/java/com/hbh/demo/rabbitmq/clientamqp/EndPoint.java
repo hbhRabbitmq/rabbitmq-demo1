@@ -28,7 +28,7 @@ public abstract class EndPoint {
 
         //declaring a queue for this channel. If queue does not exist,
         //it will be created on the server.
-        channel.queueDeclare(endpointName, false, false, false, null);
+        channel.queueDeclare(endpointName, true, false, false, null);
     }
 
     /**
