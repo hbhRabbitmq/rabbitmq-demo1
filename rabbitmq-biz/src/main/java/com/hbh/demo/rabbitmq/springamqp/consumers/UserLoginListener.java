@@ -5,7 +5,6 @@ import com.hbh.demo.rabbitmq.vo.user.UserLoginVO;
 import com.rabbitmq.client.Channel;
 import org.apache.commons.lang.CharEncoding;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 
 import java.io.UnsupportedEncodingException;

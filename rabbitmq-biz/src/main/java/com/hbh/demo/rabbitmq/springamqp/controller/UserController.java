@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.concurrent.CountDownLatch;
+
 @Controller
 public class UserController {
     @Autowired
@@ -14,14 +16,26 @@ public class UserController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String login(UserLoginVO userLoginVO){
-        for (int i= 0 ;i<1000;i++){
-            UserLoginVO userLoginVO1 = new UserLoginVO("username"+i,"password"+i);
-            userService.login(userLoginVO1);
+    public String login(UserLoginVO userLoginVO) throws InterruptedException {
+        final CountDownLatch latch = new CountDownLatch(30);
+        for (int i = 0; i < 30; i++) {
+            final UserLoginVO userLoginVO1 = new UserLoginVO("username" + i, "password" + i);
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        latch.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    while (true){
+                        userService.login(userLoginVO1);
+                    }
+                }
+            }).start();
+            Thread.sleep(500);
+            latch.countDown();
         }
+        latch.await();
         return "已发送";
     }
-
-
-
 }
